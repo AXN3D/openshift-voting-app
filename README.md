@@ -2,31 +2,133 @@
 
 
 
-A production-style voting application deployed on OpenShift (CRC and Sandbox compatible).
+A production-style voting application deployed on OpenShift using CodeReady Containers (CRC).  
+
+This project focuses on understanding core OpenShift and Kubernetes concepts through hands-on deployment and troubleshooting.
 
 
 
-\## Concepts Covered
+---
+
+
+
+\## Architecture (Simplified)
+
+
+
+\- PostgreSQL (StatefulSet + Persistent Storage)
+
+\- Redis (StatefulSet – upcoming)
+
+\- Vote API (Deployment – upcoming)
+
+\- Vote UI (Deployment + Route – upcoming)
+
+
+
+---
+
+
+
+\## Current Progress ✅
+
+
+
+\### PostgreSQL Deployment
+
+\- Deployed PostgreSQL using a StatefulSet
+
+\- Configured persistent storage using PersistentVolumeClaims (PVC)
+
+\- Fixed CrashLoopBackOff by correctly configuring `PGDATA`
+
+\- Validated data persistence across pod restarts
+
+\- Exposed PostgreSQL internally using a ClusterIP Service
+
+
+
+---
+
+
+
+\## Concepts Covered So Far
+
+
 
 \- OpenShift Projects (Namespaces)
 
-\- Deployments vs StatefulSets
+\- StatefulSets vs Deployments
 
-\- Services \& Routes
+\- PersistentVolumeClaims (PVC)
 
-\- ConfigMaps \& Secrets
+\- Pod lifecycle and restarts
 
-\- Persistent Volumes
+\- Troubleshooting CrashLoopBackOff
 
-\- Basic Network Policies
+\- DiskPressure issues in CRC
 
-\- Troubleshooting using oc CLI
+\- OpenShift CLI (`oc`) usage
 
 
 
-\## Environments
+---
 
-\- vote-dev
 
-\- vote-prod
+
+\## Tools \& Platform
+
+
+
+\- OpenShift 4.x (CodeReady Containers)
+
+\- Kubernetes
+
+\- PostgreSQL
+
+\- Git \& GitHub
+
+\- Windows + PowerShell
+
+
+
+---
+
+
+
+\## Next Steps 🚀
+
+
+
+\- Deploy Redis
+
+\- Deploy Vote API
+
+\- Deploy Vote UI
+
+\- Expose application using OpenShift Routes
+
+\- Add basic NetworkPolicies
+
+\- Final cleanup and documentation
+
+
+
+---
+
+
+
+\## Why This Project?
+
+
+
+This project is designed to:
+
+\- Learn OpenShift fundamentals deeply
+
+\- Practice real-world troubleshooting
+
+\- Build a resume-ready OpenShift project
+
+
 
