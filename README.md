@@ -12,18 +12,13 @@ This project focuses on understanding core OpenShift and Kubernetes concepts thr
 
 
 
-\## Architecture (Simplified)
 
+## Architecture (Current)
 
-
-\- PostgreSQL (StatefulSet + Persistent Storage)
-
-\- Redis (StatefulSet – upcoming)
-
-\- Vote API (Deployment – upcoming)
-
-\- Vote UI (Deployment + Route – upcoming)
-
+- PostgreSQL (StatefulSet + PVC)
+- Redis (StatefulSet)
+- Vote API (Deployment)
+- Internal communication via ClusterIP Services
 
 
 ---
@@ -52,23 +47,18 @@ This project focuses on understanding core OpenShift and Kubernetes concepts thr
 
 
 
-\## Concepts Covered So Far
 
+## Concepts Covered
 
-
-\- OpenShift Projects (Namespaces)
-
-\- StatefulSets vs Deployments
-
-\- PersistentVolumeClaims (PVC)
-
-\- Pod lifecycle and restarts
-
-\- Troubleshooting CrashLoopBackOff
-
-\- DiskPressure issues in CRC
-
-\- OpenShift CLI (`oc`) usage
+- OpenShift Projects (Namespaces)
+- Deployments vs StatefulSets
+- PersistentVolumeClaims (PVC)
+- Service discovery using Kubernetes DNS
+- Environment variable based configuration
+- OpenShift non-root container security model
+- Debugging CrashLoopBackOff issues
+- Overriding container command and arguments
+- Using oc CLI for logs and troubleshooting
 
 
 
@@ -129,6 +119,30 @@ This project is designed to:
 \- Practice real-world troubleshooting
 
 \- Build a resume-ready OpenShift project
+
+-------------------------------------------
+
+## Current Progress ✅
+
+### PostgreSQL
+- Deployed PostgreSQL using a StatefulSet
+- Configured persistent storage using PersistentVolumeClaims (PVC)
+- Fixed CrashLoopBackOff by correctly configuring `PGDATA`
+- Verified data persistence across pod restarts
+
+### Redis
+- Deployed Redis using a StatefulSet
+- Exposed Redis internally using a ClusterIP Service
+- Verified connectivity using `redis-cli`
+
+### Vote API
+- Deployed a stateless Vote API using a Deployment
+- Connected the API to PostgreSQL and Redis using Kubernetes Service DNS
+- Troubleshot CrashLoopBackOff caused by OpenShift non-root security constraints
+- Fixed privileged port binding issue by overriding the container command to run on port 8080
+
+
+
 
 
 
