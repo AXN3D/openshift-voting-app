@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote-api
+  namespace: vote-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote-api
+  template:
+    metadata:
+      labels:
+        app: vote-api
+    spec:
+      containers:
+        - name: vote-api
+          image: dockersamples/examplevotingapp_vote:before
+          ports:
+            - containerPort: 8080
+          command:
+            - gunicorn
+          args:
+            - app:app
+            - "--bind"
+            - "0.0.0.0:8080"
+          env:
+            - name: DATABASE_HOST
+              value: postgres
+            - name: DATABASE_USER
+              value: voting
+            - name: DATABASE_PASSWORD
+              value: voting123
+            - name: DATABASE_NAME
+              value: voting
+            - name: REDIS_HOST
+              value: redis

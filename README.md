@@ -142,6 +142,15 @@ This project is designed to:
 - Fixed privileged port binding issue by overriding the container command to run on port 8080
 
 
+## Frontend Status (Current)
+
+The original demo voting UI container images were found to be unstable and incompatible
+with OpenShift’s restricted security model (non-root execution and PodSecurity enforcement).
+
+To validate OpenShift routing, TLS termination, and security compliance, a hardened
+NGINX-based frontend was deployed temporarily.
+
+A custom lightweight voting UI will be implemented next to interact directly with the Vote API.
 
 
 
